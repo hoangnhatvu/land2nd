@@ -66,7 +66,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 24,
   },
   itemContainer: {
     height: 150,

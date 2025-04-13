@@ -63,7 +63,7 @@ export const MAIN_TITLE = {
 
 export const MEDIUM_TEXT = {
     fontSize: scaleFont(14),
-    lineHeight: calLineHeight(scaleFont(16)),
+    lineHeight: calLineHeight(scaleFont(18)),
     letterSpacing: 0,
     fontWeight: '500',
 };

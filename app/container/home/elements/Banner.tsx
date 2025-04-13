@@ -1,6 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
-import { Colors } from '../../../utils';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
+import {Colors} from '../../../utils';
+import {MyText} from '../../../components';
 
 interface BannerProps {
   title: string;
@@ -22,11 +30,14 @@ const Banner: React.FC<BannerProps> = ({
       <ImageBackground
         source={imageUrl}
         style={styles.background}
-        imageStyle={styles.imageStyle}
-      >
-        <View style={[styles.overlay, { backgroundColor }]}>
+        imageStyle={styles.imageStyle}>
+        <View style={[styles.overlay, {backgroundColor}]}>
           <View style={styles.content}>
-            <Text style={styles.title}>{title}</Text>
+            <MyText
+              category="large.text"
+              style={{color: Colors.WHITE}}
+              text={title}
+            />
             {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
           </View>
         </View>
@@ -39,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     height: 150,
     marginHorizontal: 16,
-    marginVertical: 12,
+    marginTop: 12,
     borderRadius: 10,
     overflow: 'hidden',
   },
@@ -52,29 +63,22 @@ const styles = StyleSheet.create({
   },
   overlay: {
     position: 'absolute',
-    right: 0,
+    left: 0,
     top: 0,
     bottom: 0,
-    width: '60%',
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-    borderTopLeftRadius: 100,
-    borderBottomLeftRadius: 100,
+    width: '50%',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderTopRightRadius: 100,
+    borderBottomRightRadius: 100,
   },
   content: {
     padding: 16,
     justifyContent: 'center',
     height: '100%',
   },
-  title: {
-    fontFamily: 'DM Sans',
-    fontSize: 20,
-    fontWeight: '700',
-    color: Colors.WHITE,
-    marginBottom: 6,
-  },
   subtitle: {
-    fontFamily: 'DM Sans',
+    fontFamily: 'Inter-Regular',
     fontSize: 10,
     fontWeight: '400',
     color: Colors.WHITE,

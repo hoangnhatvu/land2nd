@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Colors } from '../../../utils';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {Colors} from '../../../utils';
+import {MyText} from '../../../components';
 
 interface NewsItemProps {
   id: string;
@@ -22,9 +23,24 @@ const NewsItem: React.FC<NewsItemProps> = ({
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.contentContainer}>
-        <Text style={styles.title} numberOfLines={2}>{title}</Text>
-        <Text style={styles.excerpt} numberOfLines={2}>{excerpt}</Text>
-        <Text style={styles.date}>{date}</Text>
+        <MyText
+          category="medium.text"
+          style={{color: Colors.PRIMARY_TEXT}}
+          text={title}
+          numberOfLines={2}
+        />
+        <MyText
+          category="normal.text"
+          style={{color: Colors.PRIMARY_TEXT}}
+          text={excerpt}
+          numberOfLines={1}
+        />
+        <MyText
+          category="small.text"
+          style={{color: Colors.GRAY}}
+          text={date}
+          numberOfLines={1}
+        />
       </View>
       <Image source={image} style={styles.image} resizeMode="cover" />
     </TouchableOpacity>
@@ -36,34 +52,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: Colors.WHITE,
     borderRadius: 10,
-    marginHorizontal: 16,
     marginBottom: 16,
-    padding: 4,
   },
   contentContainer: {
     flex: 2,
     paddingRight: 10,
     justifyContent: 'space-between',
-  },
-  title: {
-    fontFamily: 'DM Sans',
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#06070C',
-    marginBottom: 8,
-  },
-  excerpt: {
-    fontFamily: 'DM Sans',
-    fontSize: 12,
-    fontWeight: '400',
-    color: '#06070C',
-    marginBottom: 8,
-  },
-  date: {
-    fontFamily: 'DM Sans',
-    fontSize: 10,
-    fontWeight: '300',
-    color: Colors.GRAY,
   },
   image: {
     flex: 1,
