@@ -1,7 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import ProductCard, { ProductCardType } from './ProductCard';
-import { Colors } from '../../../utils';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  ViewStyle,
+} from 'react-native';
+import ProductCard, {ProductCardType} from '../../../components/product/ProductCard';
+import {Colors} from '../../../utils';
+import {MyText} from '../../../components';
 
 // Mock data for product items
 const mockProducts = [
@@ -10,7 +18,7 @@ const mockProducts = [
     title: 'Tai nghe Mashall Major IV',
     category: 'Tai nghe cũ',
     price: '1.500.000 đ',
-    image: require('../../../../assets/images/apple.png'), // Placeholder - replace with actual images
+    image: require('../../../../assets/images/figma/headphone_marshall.png'), // Placeholder - replace with actual images
     rating: 4.6,
   },
   {
@@ -18,7 +26,7 @@ const mockProducts = [
     title: 'Sony CH510',
     category: 'Tai nghe cũ',
     price: '1.500.000 đ',
-    image: require('../../../../assets/images/apple.png'), // Placeholder - replace with actual images
+    image: require('../../../../assets/images/figma/headphone_marshall.png'), // Placeholder - replace with actual images
     rating: 4.6,
   },
   {
@@ -26,7 +34,7 @@ const mockProducts = [
     title: 'Tai nghe Mashall Major IV',
     category: 'Tai nghe cũ',
     price: '1.500.000 đ',
-    image: require('../../../../assets/images/apple.png'), // Placeholder - replace with actual images
+    image: require('../../../../assets/images/figma/headphone_marshall.png'), // Placeholder - replace with actual images
     rating: 4.6,
   },
 ];
@@ -36,17 +44,17 @@ const mockCategoryProducts = [
   {
     id: '1',
     title: 'Laptop',
-    image: require('../../../../assets/images/apple.png'),
+    image: require('../../../../assets/images/figma/headphone_marshall.png'),
   },
   {
     id: '2',
     title: 'Tai nghe',
-    image: require('../../../../assets/images/apple.png'),
+    image: require('../../../../assets/images/figma/headphone_marshall.png'),
   },
   {
     id: '3',
     title: 'Điện thoại',
-    image: require('../../../../assets/images/apple.png'),
+    image: require('../../../../assets/images/figma/headphone_marshall.png'),
   },
 ];
 
@@ -55,6 +63,7 @@ interface ProductListProps {
   onSeeAllPress?: () => void;
   products?: any[]; // In a real app, you'd use a proper type for your product data
   cardType?: ProductCardType;
+  contanerStyle?: ViewStyle;
 }
 
 const ProductList: React.FC<ProductListProps> = ({
@@ -62,24 +71,33 @@ const ProductList: React.FC<ProductListProps> = ({
   onSeeAllPress,
   products = mockProducts,
   cardType = 'standard',
+  contanerStyle,
 }) => {
   // Use appropriate mock data based on card type
-  const displayProducts = cardType === 'category' ? mockCategoryProducts : products;
+  const displayProducts =
+    cardType === 'category' ? mockCategoryProducts : products;
 
   return (
-    <View style={styles.container}>
+    <View style={contanerStyle}>
       <View style={styles.header}>
-        <Text style={styles.title}>{title}</Text>
+        <MyText
+          category="main.title"
+          style={{color: Colors.PRIMARY_TEXT}}
+          text={title}
+        />
         <TouchableOpacity onPress={onSeeAllPress}>
-          <Text style={styles.seeAllText}>Xem tất cả</Text>
+        <MyText
+          category="small.title"
+          style={{color: Colors.PRIMARY}}
+          text={'Xem tất cả'}
+        />
         </TouchableOpacity>
       </View>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
-      >
-        {displayProducts.map((product) => (
+        contentContainerStyle={styles.scrollContent}>
+        {displayProducts.map(product => (
           <ProductCard
             key={product.id}
             id={product.id}
@@ -90,7 +108,11 @@ const ProductList: React.FC<ProductListProps> = ({
             rating={product.rating}
             type={cardType}
             onPress={() => console.log(`Product pressed: ${product.title}`)}
-            onAddToCart={cardType === 'standard' ? () => console.log(`Add to cart: ${product.title}`) : undefined}
+            onAddToCart={
+              cardType === 'standard'
+                ? () => console.log(`Add to cart: ${product.title}`)
+                : undefined
+            }
           />
         ))}
       </ScrollView>
@@ -99,28 +121,12 @@ const ProductList: React.FC<ProductListProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: 16,
-  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
-    marginBottom: 12,
-  },
-  title: {
-    fontFamily: 'DM Sans',
-    fontSize: 16,
-    fontWeight: '500',
-    color: Colors.PRIMARY_TEXT,
-    letterSpacing: 0.2,
-  },
-  seeAllText: {
-    fontFamily: 'DM Sans',
-    fontSize: 12,
-    fontWeight: '500',
-    color: Colors.PRIMARY,
+    marginBottom: 16,
   },
   scrollContent: {
     paddingHorizontal: 8,

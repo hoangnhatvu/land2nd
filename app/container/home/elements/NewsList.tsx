@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import NewsItem from './NewsItem';
-import { MyButton } from '../../../components';
+import { MyButton, MyText } from '../../../components';
 import { Colors } from '../../../utils';
 
 // Mock data for news items
@@ -11,21 +11,21 @@ const mockNews = [
     title: 'Hướng dẫn cách tắt laptop đúng cách, tăng độ bền, tuổi thọ',
     excerpt: 'Tại sao việc tắt laptop đúng cách lại ...',
     date: '13-07-2025',
-    image: require('../../../../assets/images/apple.png'), // Placeholder - replace with actual images
+    image: require('../../../../assets/images/figma/news_laptop.png'),
   },
   {
     id: '2',
     title: 'Cách xóa video trên TikTok đơn giản trong vài phút',
     excerpt: 'TikTok có những quy định nghiêm ...',
     date: '13-07-2025',
-    image: require('../../../../assets/images/apple.png'), // Placeholder - replace with actual images
+    image: require('../../../../assets/images/figma/headphone_category.png'),
   },
   {
     id: '3',
     title: '3 cách tua nhanh video trên iPhone đơn giản, dễ thực hiện',
     excerpt: 'Tua nhanh video trên iPhone ...',
     date: '13-07-2025',
-    image: require('../../../../assets/images/apple.png'), // Placeholder - replace with actual images
+    image: require('../../../../assets/images/figma/laptop_category.png'),
   },
 ];
 
@@ -42,8 +42,11 @@ const NewsList: React.FC<NewsListProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      
+      <MyText
+        category="main.title"
+        style={{ color: Colors.PRIMARY_TEXT, marginBottom: 16 }}
+        text={title}
+      />      
       {news.map((item) => (
         <NewsItem
           key={item.id}
@@ -60,7 +63,7 @@ const NewsList: React.FC<NewsListProps> = ({
         <MyButton
           title="Xem tất cả tin tức"
           type="outline"
-          onPress={onSeeAllPress}
+          onPress={onSeeAllPress || (() => {})}
         />
       </View>
     </View>
@@ -69,19 +72,10 @@ const NewsList: React.FC<NewsListProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 16,
-  },
-  title: {
-    fontFamily: 'DM Sans',
-    fontSize: 16,
-    fontWeight: '500',
-    color: Colors.PRIMARY_TEXT,
-    letterSpacing: 0.2,
     marginHorizontal: 16,
-    marginBottom: 12,
+    marginTop: 16
   },
   buttonContainer: {
-    marginHorizontal: 16,
     marginTop: 8,
   },
 });

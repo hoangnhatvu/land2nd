@@ -17,7 +17,7 @@ const buyProducts = [
     title: 'Tai nghe Mashall Major IV',
     category: 'Tai nghe cũ',
     price: '1.500.000 đ',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/headphone_marshall.png'),
     rating: 4.6,
   },
   {
@@ -25,7 +25,7 @@ const buyProducts = [
     title: 'Sony CH510',
     category: 'Tai nghe cũ',
     price: '1.500.000 đ',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/headphone_sony.png'),
     rating: 4.6,
   },
   {
@@ -33,7 +33,7 @@ const buyProducts = [
     title: 'Tai nghe Mashall Major IV',
     category: 'Tai nghe cũ',
     price: '1.500.000 đ',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/headphone_category.png'),
     rating: 4.6,
   },
 ];
@@ -44,7 +44,7 @@ const sellProducts = [
     title: 'Điện thoại Relme',
     category: 'Điện thoại',
     price: '1.500.000 đ',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/laptop_category.png'),
     rating: 4.6,
   },
   {
@@ -52,7 +52,7 @@ const sellProducts = [
     title: 'Ipad',
     category: 'Máy tính bảng',
     price: '1.500.000 đ',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/news_laptop.png'),
     rating: 4.6,
   },
   {
@@ -60,7 +60,7 @@ const sellProducts = [
     title: 'Điện thoại Relme',
     category: 'Điện thoại',
     price: '1.500.000 đ',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/headphone_sony.png'),
     rating: 4.6,
   },
 ];
@@ -69,17 +69,17 @@ const rentProducts = [
   {
     id: '1',
     title: 'Laptop',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/laptop_category.png'),
   },
   {
     id: '2',
     title: 'Tai nghe',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/headphone_category.png'),
   },
   {
     id: '3',
     title: 'Điện thoại',
-    image: require('../../../assets/images/apple.png'),
+    image: require('../../../assets/images/figma/news_laptop.png'),
   },
 ];
 
@@ -159,25 +159,19 @@ const Home = React.memo(() => {
         />
         
         <CategoryList title="Bạn cần gì?" />
-        
-        <Banner 
-          title="Đồ cũ, đồ 2nd đa lĩnh vực lớn nhất"
-          imageUrl={require('../../../assets/images/apple.png')}
-          onPress={() => console.log('Banner 1 pressed')}
-        />
-        
-        {/* Standard product card type */}
+    
         <ProductList 
           title="Muốn mua"
           products={buyProducts}
+          contanerStyle={{ marginTop: 50 }}
           cardType="standard"
           onSeeAllPress={() => console.log('See all buy products')}
         />
         
         <Banner 
-          title="Kemerdekaan Diskon 70%"
-          subtitle="Periode Agustus 2021"
-          imageUrl={require('../../../assets/images/apple.png')}
+          title="Đồ cũ, đồ 2nd đa lĩnh vực lớn nhất"
+          subtitle=""
+          imageUrl={require('../../../assets/images/figma/headphone_marshall.png')}
           onPress={() => console.log('Banner 2 pressed')}
         />
         
@@ -185,13 +179,14 @@ const Home = React.memo(() => {
         <ProductList 
           title="Muốn bán"
           products={sellProducts}
+          contanerStyle={{ marginTop: 24 }}
           cardType="simple"
           onSeeAllPress={() => console.log('See all sell products')}
         />
         
         <Banner 
           title="2handland - Đơn vị thu mua đồ cũ nhiều lĩnh vực uy tín"
-          imageUrl={require('../../../assets/images/apple.png')}
+          imageUrl={require('../../../assets/images/figma/headphone_marshall.png')}
           onPress={() => console.log('Banner 3 pressed')}
         />
         
@@ -199,6 +194,7 @@ const Home = React.memo(() => {
         <ProductList 
           title="Muốn thuê"
           products={rentProducts}
+          contanerStyle={{ marginTop: 24 }}
           cardType="category"
           onSeeAllPress={() => console.log('See all rent products')}
         />

@@ -64,14 +64,14 @@ const CategoryList: React.FC<CategoryListProps> = ({title, onSeeAllPress}) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 16,
+    marginTop: 24,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
-    marginBottom: 12,
+    marginBottom: 16,
   },
   scrollContent: {
     paddingHorizontal: 8,

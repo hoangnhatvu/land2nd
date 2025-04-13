@@ -1,7 +1,14 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Colors } from '../../../utils';
+import {Colors} from '../../utils';
+import {MyText} from '..';
 
 export type ProductCardType = 'standard' | 'simple' | 'category';
 
@@ -31,58 +38,80 @@ const ProductCard: React.FC<ProductCardProps> = ({
   // Render category card (Type 3)
   if (type === 'category') {
     return (
-      <TouchableOpacity 
-        style={[styles.container, styles.categoryContainer]} 
-        onPress={onPress}
-      >
+      <TouchableOpacity
+        style={[styles.container, styles.categoryContainer]}
+        onPress={onPress}>
         <Image source={image} style={styles.categoryImage} resizeMode="cover" />
         <View style={styles.categoryLabelContainer}>
-          <Text style={styles.categoryLabel}>{title}</Text>
+          <MyText
+            text={title}
+            category="medium.text"
+            style={{color: Colors.WHITE}}
+            numberOfLines={1}
+          />
         </View>
       </TouchableOpacity>
     );
   }
 
-  // Render simple card (Type 2) or standard card (Type 1)
   return (
-    <TouchableOpacity 
-      style={[styles.container, type === 'simple' && styles.simpleContainer]} 
-      onPress={onPress}
-    >
+    <TouchableOpacity
+      style={[styles.container, type === 'simple' && styles.simpleContainer]}
+      onPress={onPress}>
       <View style={styles.imageContainer}>
         <Image source={image} style={styles.image} resizeMode="cover" />
         {type === 'standard' && rating && (
           <View style={styles.ratingContainer}>
-            <Icon name="star" size={12} color="#FFC120" />
-            <Text style={styles.ratingText}>{rating}</Text>
+            <Icon name="star" size={12} color={Colors.YELLOW} />
+            <MyText
+              text={rating}
+              category="small.text"
+              style={{color: Colors.WHITE}}
+            />
           </View>
         )}
       </View>
       <View style={styles.contentContainer}>
         <View style={styles.infoContainer}>
           {category && (
-            <Text style={styles.categoryText}>{category}</Text>
+            <MyText
+              text={category}
+              category="small.text"
+              style={{color: Colors.PRIMARY_TEXT}}
+            />
           )}
-          <Text 
-            style={styles.titleText} 
+          <MyText
+            text={title}
+            category="medium.text"
+            style={{color: Colors.PRIMARY_TEXT, minHeight: 40}}
             numberOfLines={2}
-          >
-            {title}
-          </Text>
+          />
         </View>
-        
+
         {type === 'standard' && price && (
           <View style={styles.priceContainer}>
-            <Text style={styles.priceText}>{price}</Text>
+            <MyText
+              text={price}
+              category="high.text"
+              style={{color: Colors.RED_HIGH_LIGHT, alignSelf: 'flex-end'}}
+              numberOfLines={2}
+            />
             {onAddToCart && (
-              <TouchableOpacity 
-                style={styles.cartButton} 
-                onPress={(e) => {
+              <TouchableOpacity
+                style={styles.cartButton}
+                onPress={e => {
                   e.stopPropagation();
                   onAddToCart();
-                }}
-              >
-                <Icon name="plus" size={14} color={Colors.WHITE} />
+                }}>
+                <Image
+                  source={{uri: 'ic_cart'}}
+                  style={{
+                    width: 12,
+                    height: 12,
+                    tintColor: Colors.WHITE,
+                    resizeMode: 'contain',
+                  }}
+                />
               </TouchableOpacity>
             )}
           </View>
@@ -98,8 +127,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     borderRadius: 10,
     marginHorizontal: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
+    shadowColor: Colors.BLACK,
+    shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.05,
     shadowRadius: 3,
     elevation: 2,
@@ -115,7 +144,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
     width: '100%',
-    height: 120,
+    height: 153,
   },
   image: {
     width: '100%',
@@ -130,13 +159,13 @@ const styles = StyleSheet.create({
   },
   categoryLabelContainer: {
     position: 'absolute',
-    right: 0,
-    top: 20,
+    left: 0,
+    bottom: 20,
     backgroundColor: Colors.SECONDARY,
     paddingVertical: 4,
     paddingHorizontal: 12,
-    borderTopLeftRadius: 8,
-    borderBottomLeftRadius: 8,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
   },
   categoryLabel: {
     color: Colors.WHITE,
@@ -150,49 +179,23 @@ const styles = StyleSheet.create({
     right: 8,
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 2,
     backgroundColor: Colors.PRIMARY,
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 8,
   },
-  ratingText: {
-    color: Colors.WHITE,
-    fontSize: 10,
-    fontWeight: '400',
-    marginLeft: 3,
-  },
   contentContainer: {
     padding: 10,
   },
   infoContainer: {
-    marginBottom: 8,
+    gap: 4,
   },
-  categoryText: {
-    fontSize: 10,
-    fontWeight: '300',
-    color: Colors.PRIMARY_TEXT,
-    letterSpacing: 0.2,
-    marginBottom: 4,
-    fontFamily: 'DM Sans',
-  },
-  titleText: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: Colors.PRIMARY_TEXT,
-    letterSpacing: 0.2,
-    fontFamily: 'DM Sans',
-  },
+
   priceContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  priceText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: Colors.RED_HIGH_LIGHT || '#FE3A30',
-    letterSpacing: 0.2,
-    fontFamily: 'DM Sans',
   },
   cartButton: {
     width: 24,
