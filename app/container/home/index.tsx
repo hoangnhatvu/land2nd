@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import BaseView from '../../components/base/BaseView';
 import Header from './elements/Header';
 import SearchBar from './elements/SearchBar';
@@ -8,7 +8,7 @@ import ProductList from './elements/ProductList';
 import Banner from './elements/Banner';
 import BannerSlider from './elements/BannerSLider';
 import NewsList from './elements/NewsList';
-import { Colors } from '../../utils';
+import {Colors} from '../../utils';
 import HomeSkeleton from '../../components/skeleton/HomeSkeleton';
 
 const buyProducts = [
@@ -86,17 +86,20 @@ const rentProducts = [
 const bannerSlides = [
   {
     id: '1',
-    imageUrl: 'https://cdn.24h.com.vn/upload/1-2024/images/2024-03-01/image3-1709273752-75-width1999height1500.jpg',
+    imageUrl:
+      'https://cdn.24h.com.vn/upload/1-2024/images/2024-03-01/image3-1709273752-75-width1999height1500.jpg',
     onPress: () => console.log('Slide 1 pressed'),
   },
   {
     id: '2',
-    imageUrl: 'https://cdn.24h.com.vn/upload/1-2024/images/2024-03-01/image3-1709273752-75-width1999height1500.jpg',
+    imageUrl:
+      'https://cdn.24h.com.vn/upload/1-2024/images/2024-03-01/image3-1709273752-75-width1999height1500.jpg',
     onPress: () => console.log('Slide 2 pressed'),
   },
   {
     id: '3',
-    imageUrl: 'https://cdn.24h.com.vn/upload/1-2024/images/2024-03-01/image3-1709273752-75-width1999height1500.jpg',
+    imageUrl:
+      'https://cdn.24h.com.vn/upload/1-2024/images/2024-03-01/image3-1709273752-75-width1999height1500.jpg',
     onPress: () => console.log('Slide 3 pressed'),
   },
 ];
@@ -104,20 +107,20 @@ const bannerSlides = [
 const Home = React.memo(() => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  
-  // Simulate loading data
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    
-    return () => clearTimeout(timer);
-  }, []);
-  
+
+  // // Simulate loading data
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000);
+
+  //   return () => clearTimeout(timer);
+  // }, []);
+
   if (isLoading) {
     return (
       <BaseView>
-        <Header 
+        <Header
           notificationCount={3}
           cartCount={1}
           onNotificationPress={() => console.log('Notification pressed')}
@@ -125,81 +128,81 @@ const Home = React.memo(() => {
         />
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.scrollContent}
-        >
+          contentContainerStyle={styles.scrollContent}>
           <HomeSkeleton.HomeScreenSkeleton />
         </ScrollView>
       </BaseView>
     );
   }
-  
+
   return (
     <BaseView>
-      <Header 
+      <Header
         notificationCount={3}
         cartCount={1}
         onNotificationPress={() => console.log('Notification pressed')}
         onCartPress={() => console.log('Cart pressed')}
       />
-      
-      <ScrollView 
+
+      <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
-      >
-        <SearchBar 
+        contentContainerStyle={styles.scrollContent}>
+        <SearchBar
           value={searchQuery}
           onChangeText={setSearchQuery}
-          onSearch={() => console.log('Search pressed with query:', searchQuery)}
+          onSearch={() =>
+            console.log('Search pressed with query:', searchQuery)
+          }
         />
-        
-        <BannerSlider 
+
+        <BannerSlider
           data={bannerSlides}
           autoplay={true}
           autoplayInterval={4000}
         />
-        
+
         <CategoryList title="Bạn cần gì?" />
-    
-        <ProductList 
+
+        <ProductList
           title="Muốn mua"
           products={buyProducts}
-          contanerStyle={{ marginTop: 50 }}
+          contanerStyle={{marginTop: 50}}
           cardType="standard"
           onSeeAllPress={() => console.log('See all buy products')}
         />
-        
-        <Banner 
+
+        <Banner
           title="Đồ cũ, đồ 2nd đa lĩnh vực lớn nhất"
           subtitle=""
           imageUrl={require('../../../assets/images/figma/headphone_marshall.png')}
           onPress={() => console.log('Banner 2 pressed')}
         />
-        
+
         {/* Simple product card type */}
-        <ProductList 
+        <ProductList
           title="Muốn bán"
           products={sellProducts}
-          contanerStyle={{ marginTop: 24 }}
+          contanerStyle={{marginTop: 24}}
           cardType="simple"
           onSeeAllPress={() => console.log('See all sell products')}
         />
-        
-        <Banner 
+
+        <Banner
           title="2handland - Đơn vị thu mua đồ cũ nhiều lĩnh vực uy tín"
           imageUrl={require('../../../assets/images/figma/headphone_marshall.png')}
           onPress={() => console.log('Banner 3 pressed')}
         />
-        
+
         {/* Category product card type */}
-        <ProductList 
+        <ProductList
           title="Muốn thuê"
           products={rentProducts}
-          contanerStyle={{ marginTop: 24 }}
+          contanerStyle={{marginTop: 24}}
           cardType="category"
           onSeeAllPress={() => console.log('See all rent products')}
         />
-        
-        <NewsList 
+
+        <NewsList
           title="Tin tức mới nhất"
           onSeeAllPress={() => console.log('See all news')}
         />

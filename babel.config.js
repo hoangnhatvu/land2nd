@@ -1,7 +1,26 @@
 module.exports = {
-  presets: ['module:@react-native/babel-preset'],
+  presets: ['module:metro-react-native-babel-preset'],
   plugins: [
-    'module:react-native-dotenv',
-    'react-native-reanimated/plugin'
+    ['module:react-native-dotenv'],
+    ['react-native-reanimated/plugin'],
+    [
+      'module-resolver',
+      {
+        root: ['./app'],
+        alias: {
+          '@app': './app',
+          '@common': './app/common',
+          '@components': './app/components',
+          '@constant': './app/constant',
+          '@utils': './app/utils',
+        },
+        extensions: ['.tsx', '.ts', '.js', '.json'],
+      },
+    ],
+  ],
+  overrides: [
+    {
+      plugins: [['@babel/plugin-transform-private-methods', {loose: true}]],
+    },
   ],
 };

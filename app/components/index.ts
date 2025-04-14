@@ -1,11 +1,16 @@
-import MyText from './base/BaseText';
+import {MyText, BaseView, TextVariant} from './base';
 import FormTextInput from './textInput';
 import MyButton from './button';
-import ScreenWrapper from './wrapper/ScreenWrapper';
+import {ProductCard, ProductCardType} from './product';
+import {ScreenWrapper} from './wrapper';
 
 export {
-    MyText,
-    FormTextInput,
-    MyButton,
-    ScreenWrapper
+  MyText,
+  BaseView,
+  TextVariant,
+  FormTextInput,
+  MyButton,
+  ProductCard,
+  type ProductCardType,
+  ScreenWrapper,
 };

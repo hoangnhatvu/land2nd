@@ -7,9 +7,8 @@ import {
   ScrollView,
   ViewStyle,
 } from 'react-native';
-import ProductCard, {ProductCardType} from '../../../components/product/ProductCard';
-import {Colors} from '../../../utils';
-import {MyText} from '../../../components';
+import {MyText, ProductCard, ProductCardType} from '@components';
+import {Colors} from '@utils';
 
 // Mock data for product items
 const mockProducts = [
@@ -86,11 +85,11 @@ const ProductList: React.FC<ProductListProps> = ({
           text={title}
         />
         <TouchableOpacity onPress={onSeeAllPress}>
-        <MyText
-          category="small.title"
-          style={{color: Colors.PRIMARY}}
-          text={'Xem tất cả'}
-        />
+          <MyText
+            category="small.title"
+            style={{color: Colors.PRIMARY}}
+            text={'Xem tất cả'}
+          />
         </TouchableOpacity>
       </View>
       <ScrollView

@@ -1,4 +1,4 @@
-export {default as BaseText} from './BaseText'
-export {default as BaseView} from './BaseView'
+export {default as MyText} from './BaseText';
+export {default as BaseView} from './BaseView';
 
-export type {TextCategoryVariant} from './BaseText'
+export {TextVariant, type TextCategoryVariant} from './BaseText';

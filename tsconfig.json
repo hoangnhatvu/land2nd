@@ -1,3 +1,30 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@app": [
+        "./app"
+      ],
+      "@common": [
+        "./app/common"
+      ],
+      "@components": [
+        "./app/components/"
+      ],
+      "@constants": [
+        "./app/constants/"
+      ],
+      "@utils": [
+        "./app/utils/"
+      ],
+    }
+  },
+  "include": [
+    "app/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    ".nuxt",
+    "dist"
+  ]
 }

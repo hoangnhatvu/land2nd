@@ -1,18 +1,24 @@
-import { View, Text, StyleSheet, TouchableOpacity, TextStyle } from 'react-native'
-import React, { type ReactNode, isValidElement } from 'react'
-import { BaseView, BaseText, TextCategoryVariant } from '../base'
-import Feather from 'react-native-vector-icons/Feather'
-import { Colors } from '../../utils'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextStyle,
+} from 'react-native';
+import React, {type ReactNode, isValidElement} from 'react';
+import {BaseView, MyText, TextCategoryVariant} from '../base';
+import Feather from 'react-native-vector-icons/Feather';
+import {Colors} from '../../utils';
 
 interface ScreenWrapperProps {
-  isShowBackButton?: boolean,
-  children: ReactNode,
-  headerTitle: string,
-  headerTitleColor?: string
-  headerTitleCategory?: TextCategoryVariant,
-  headerComponentRight?: ReactNode,
-  footerComponent?: ReactNode,
-  onGoBack?: () => void
+  isShowBackButton?: boolean;
+  children: ReactNode;
+  headerTitle: string;
+  headerTitleColor?: string;
+  headerTitleCategory?: TextCategoryVariant;
+  headerComponentRight?: ReactNode;
+  footerComponent?: ReactNode;
+  onGoBack?: () => void;
 }
 
 const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
@@ -20,71 +26,64 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   children,
   headerTitle,
   headerTitleColor,
-  headerTitleCategory='main.title',
+  headerTitleCategory = 'main.title',
   headerComponentRight,
   footerComponent,
-  onGoBack
+  onGoBack,
 }) => {
   return (
-    <BaseView> 
+    <BaseView>
       <View style={styles.header}>
         {isShowBackButton && (
-          <TouchableOpacity
-            onPress={onGoBack}
-            style={styles.backButton}
-          >
+          <TouchableOpacity onPress={onGoBack} style={styles.backButton}>
             <Feather
-              name='chevron-left'
+              name="chevron-left"
               size={24}
               color={Colors.PRIMARY_TEXT}
             />
           </TouchableOpacity>
         )}
 
-        <BaseText
+        <MyText
           text={headerTitle}
           category={headerTitleCategory}
           style={{color: headerTitleColor || Colors.PRIMARY_TEXT}}
         />
 
-        <View
-          style={styles.headerComponentRight}
-        >
+        <View style={styles.headerComponentRight}>
           {isValidElement(headerComponentRight) && headerComponentRight}
         </View>
       </View>
 
       <View style={styles.contentContainer}>
-      {isValidElement(children) && children}
+        {isValidElement(children) && children}
       </View>
 
-      <View>
-        {isValidElement(footerComponent) && footerComponent}
-      </View>
+      <View>{isValidElement(footerComponent) && footerComponent}</View>
     </BaseView>
-  )
-}
+  );
+};
 
 export default ScreenWrapper;
 
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
-    left: 20
+    left: 20,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 17.5,
-    shadowColor: "#000",
+    shadowColor: '#000',
     backgroundColor: Colors.WHITE,
     shadowOffset: {
       width: 0,
       height: 1.5,
     },
     shadowOpacity: 0.18,
-    shadowRadius: 1.00,
+    shadowRadius: 1.0,
     elevation: 1,
   },
   headerComponentRight: {
@@ -92,6 +91,6 @@ const styles = StyleSheet.create({
     right: 20,
   },
   contentContainer: {
-    flex: 1
-  }
-})
+    flex: 1,
+  },
+});

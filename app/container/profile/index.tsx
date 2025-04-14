@@ -1,13 +1,27 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import RegisterScreen from '../register'
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {UserHeader, UserInfo, UserOthers, UserService} from './components';
+import {Colors} from '@utils';
 
 const Profile = () => {
   return (
-    <View style={{ flex: 1}}>
-      <RegisterScreen/>
-    </View>
-  )
-}
+    <SafeAreaView style={styles.container}>
+      <UserHeader />
+      <UserInfo />
+      <UserService />
+      <UserOthers />
+    </SafeAreaView>
+  );
+};
 
-export default Profile
+export default Profile;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 16,
+    gap: 10,
+    backgroundColor: Colors.WHITE,
+  },
+});
