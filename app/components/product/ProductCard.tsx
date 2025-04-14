@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 3,
     elevation: 2,
-    overflow: 'hidden',
   },
   simpleContainer: {
     // Specific styles for the simple card type if needed
