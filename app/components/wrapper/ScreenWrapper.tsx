@@ -12,12 +12,13 @@ import {Colors} from '../../utils';
 
 interface ScreenWrapperProps {
   isShowBackButton?: boolean;
-  children: ReactNode;
-  headerTitle: string;
+  children?: ReactNode;
+  headerTitle?: string;
   headerTitleColor?: string;
   headerTitleCategory?: TextCategoryVariant;
   headerComponentRight?: ReactNode;
   footerComponent?: ReactNode;
+  customHeader?: ReactNode;
   onGoBack?: () => void;
 }
 
@@ -29,31 +30,36 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   headerTitleCategory = 'main.title',
   headerComponentRight,
   footerComponent,
+  customHeader,
   onGoBack,
 }) => {
   return (
     <BaseView>
-      <View style={styles.header}>
-        {isShowBackButton && (
-          <TouchableOpacity onPress={onGoBack} style={styles.backButton}>
-            <Feather
-              name="chevron-left"
-              size={24}
-              color={Colors.PRIMARY_TEXT}
-            />
-          </TouchableOpacity>
-        )}
+      {isValidElement(customHeader) ? (
+        customHeader
+      ) : (
+        <View style={styles.header}>
+          {isShowBackButton && (
+            <TouchableOpacity onPress={onGoBack} style={styles.backButton}>
+              <Feather
+                name="chevron-left"
+                size={24}
+                color={Colors.PRIMARY_TEXT}
+              />
+            </TouchableOpacity>
+          )}
 
-        <MyText
-          text={headerTitle}
-          category={headerTitleCategory}
-          style={{color: headerTitleColor || Colors.PRIMARY_TEXT}}
-        />
+          <MyText
+            text={headerTitle}
+            category={headerTitleCategory}
+            style={{color: headerTitleColor || Colors.PRIMARY_TEXT}}
+          />
 
-        <View style={styles.headerComponentRight}>
-          {isValidElement(headerComponentRight) && headerComponentRight}
+          <View style={styles.headerComponentRight}>
+            {isValidElement(headerComponentRight) && headerComponentRight}
+          </View>
         </View>
-      </View>
+      )}
 
       <View style={styles.contentContainer}>
         {isValidElement(children) && children}
@@ -75,16 +81,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 17.5,
-    shadowColor: '#000',
-    backgroundColor: Colors.WHITE,
-    shadowOffset: {
-      width: 0,
-      height: 1.5,
-    },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
-    elevation: 1,
+    paddingVertical: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.BORDER,
   },
   headerComponentRight: {
     position: 'absolute',

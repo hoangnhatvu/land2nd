@@ -10,6 +10,7 @@ import BannerSlider from './elements/BannerSLider';
 import NewsList from './elements/NewsList';
 import {Colors} from '../../utils';
 import HomeSkeleton from '../../components/skeleton/HomeSkeleton';
+import {ScreenWrapper} from '@components';
 
 const buyProducts = [
   {
@@ -117,33 +118,34 @@ const Home = React.memo(() => {
   //   return () => clearTimeout(timer);
   // }, []);
 
-  if (isLoading) {
-    return (
-      <BaseView>
+  // if (isLoading) {
+  //   return (
+  //     <BaseView>
+  //       <Header
+  //         notificationCount={3}
+  //         cartCount={1}
+  //         onNotificationPress={() => console.log('Notification pressed')}
+  //         onCartPress={() => console.log('Cart pressed')}
+  //       />
+  //       <ScrollView
+  //         showsVerticalScrollIndicator={false}
+  //         contentContainerStyle={styles.scrollContent}>
+  //         <HomeSkeleton.HomeScreenSkeleton />
+  //       </ScrollView>
+  //     </BaseView>
+  //   );
+  // }
+
+  return (
+    <ScreenWrapper
+      customHeader={
         <Header
           notificationCount={3}
           cartCount={1}
           onNotificationPress={() => console.log('Notification pressed')}
           onCartPress={() => console.log('Cart pressed')}
         />
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.scrollContent}>
-          <HomeSkeleton.HomeScreenSkeleton />
-        </ScrollView>
-      </BaseView>
-    );
-  }
-
-  return (
-    <BaseView>
-      <Header
-        notificationCount={3}
-        cartCount={1}
-        onNotificationPress={() => console.log('Notification pressed')}
-        onCartPress={() => console.log('Cart pressed')}
-      />
-
+      }>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}>
@@ -207,7 +209,7 @@ const Home = React.memo(() => {
           onSeeAllPress={() => console.log('See all news')}
         />
       </ScrollView>
-    </BaseView>
+    </ScreenWrapper>
   );
 });
 

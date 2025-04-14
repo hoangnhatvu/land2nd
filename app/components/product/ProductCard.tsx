@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Colors} from '../../utils';
-import {MyText} from '..';
+import { MyText } from '../base';
+import { Colors } from '@utils';
 
 export type ProductCardType = 'standard' | 'simple' | 'category';
 
@@ -29,7 +29,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   onPress,
   onAddToCart,
 }) => {
-  // Render category card (Type 3)
   if (type === 'category') {
     return (
       <TouchableOpacity
@@ -161,12 +160,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
-  categoryLabel: {
-    color: Colors.WHITE,
-    fontSize: 14,
-    fontWeight: '500',
-    fontFamily: 'DM Sans',
-  },
   ratingContainer: {
     position: 'absolute',
     top: 8,
@@ -185,7 +178,6 @@ const styles = StyleSheet.create({
   infoContainer: {
     gap: 4,
   },
-
   priceContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

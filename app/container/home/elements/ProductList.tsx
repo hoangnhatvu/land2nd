@@ -7,8 +7,8 @@ import {
   ScrollView,
   ViewStyle,
 } from 'react-native';
-import {MyText, ProductCard, ProductCardType} from '@components';
 import {Colors} from '@utils';
+import { MyText, ProductCard, ProductCardType } from '@components';
 
 // Mock data for product items
 const mockProducts = [
