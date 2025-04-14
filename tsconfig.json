@@ -20,7 +20,8 @@
     }
   },
   "include": [
-    "app/**/*"
+    "app/**/*",
+    "index.js"
   ],
   "exclude": [
     "node_modules",

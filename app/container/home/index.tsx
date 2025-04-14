@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
-import BaseView from '../../components/base/BaseView';
+import {ScrollView, StyleSheet} from 'react-native';
 import Header from './elements/Header';
 import SearchBar from './elements/SearchBar';
 import CategoryList from './elements/CategoryList';
@@ -8,9 +7,7 @@ import ProductList from './elements/ProductList';
 import Banner from './elements/Banner';
 import BannerSlider from './elements/BannerSLider';
 import NewsList from './elements/NewsList';
-import {Colors} from '../../utils';
-import HomeSkeleton from '../../components/skeleton/HomeSkeleton';
-import {ScreenWrapper} from '@components';
+import {BaseView, HomeSkeleton, ScreenWrapper} from '@components';
 
 const buyProducts = [
   {
@@ -109,32 +106,32 @@ const Home = React.memo(() => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  // // Simulate loading data
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 2000);
+  // Simulate loading data
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
 
-  //   return () => clearTimeout(timer);
-  // }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
-  // if (isLoading) {
-  //   return (
-  //     <BaseView>
-  //       <Header
-  //         notificationCount={3}
-  //         cartCount={1}
-  //         onNotificationPress={() => console.log('Notification pressed')}
-  //         onCartPress={() => console.log('Cart pressed')}
-  //       />
-  //       <ScrollView
-  //         showsVerticalScrollIndicator={false}
-  //         contentContainerStyle={styles.scrollContent}>
-  //         <HomeSkeleton.HomeScreenSkeleton />
-  //       </ScrollView>
-  //     </BaseView>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <BaseView>
+        <Header
+          notificationCount={3}
+          cartCount={1}
+          onNotificationPress={() => console.log('Notification pressed')}
+          onCartPress={() => console.log('Cart pressed')}
+        />
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}>
+          <HomeSkeleton.HomeScreenSkeleton />
+        </ScrollView>
+      </BaseView>
+    );
+  }
 
   return (
     <ScreenWrapper

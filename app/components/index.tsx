@@ -1,8 +1,9 @@
 import {MyText, BaseView, TextVariant} from './base';
 import FormTextInput from './textInput';
 import MyButton from './button';
-import {ProductCard, ProductCardType} from './product';
+import {ProductCard, type ProductCardType} from './product';
 import {ScreenWrapper} from './wrapper';
+import {HomeSkeleton, Skeleton} from './skeleton';
 
 export {
   MyText,
@@ -11,6 +12,8 @@ export {
   FormTextInput,
   MyButton,
   ProductCard,
-  type ProductCardType,
+  ProductCardType,
   ScreenWrapper,
+  HomeSkeleton,
+  Skeleton,
 };

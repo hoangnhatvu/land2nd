@@ -11,7 +11,7 @@ module.exports = {
           '@app': './app',
           '@common': './app/common',
           '@components': './app/components',
-          '@constant': './app/constant',
+          '@constants': './app/constants',
           '@utils': './app/utils',
         },
         extensions: ['.tsx', '.ts', '.js', '.json'],
