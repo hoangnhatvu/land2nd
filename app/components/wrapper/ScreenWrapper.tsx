@@ -9,7 +9,8 @@ import React, {type ReactNode, isValidElement} from 'react';
 import {BaseView, MyText, TextCategoryVariant} from '../base';
 import Feather from 'react-native-vector-icons/Feather';
 import {Colors} from '../../utils';
-import { TAB_BAR_HEIGHT } from '../../constants/constants';
+import {TAB_BAR_HEIGHT} from '../../constants/constants';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface ScreenWrapperProps {
   isShowBackButton?: boolean;
@@ -21,6 +22,7 @@ interface ScreenWrapperProps {
   footerComponent?: ReactNode;
   customHeader?: ReactNode;
   onGoBack?: () => void;
+  hasTabBar?: boolean;
 }
 
 const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
@@ -33,7 +35,10 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   footerComponent,
   customHeader,
   onGoBack,
+  hasTabBar = true,
 }) => {
+  const insets = useSafeAreaInsets();
+  const BOTTOM_INSETS_WITH_BOTTOM_TAB = TAB_BAR_HEIGHT - insets.bottom;
   return (
     <BaseView>
       {isValidElement(customHeader) ? (
@@ -62,7 +67,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
         </View>
       )}
 
-      <View style={styles.contentContainer}>
+      <View style={{paddingBottom: hasTabBar ? BOTTOM_INSETS_WITH_BOTTOM_TAB : 16}}>
         {isValidElement(children) && children}
       </View>
 
@@ -89,9 +94,5 @@ const styles = StyleSheet.create({
   headerComponentRight: {
     position: 'absolute',
     right: 20,
-  },
-  contentContainer: {
-    height: '100%',
-    paddingBottom: TAB_BAR_HEIGHT,
   },
 });

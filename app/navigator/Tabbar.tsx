@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
         width: TAB_BAR_WIDTH,
         height: TAB_BAR_HEIGHT,
         justifyContent: 'center',
-        backgroundColor: 'red',
+        alignItems: 'center',
         paddingTop: 12
     },
     tabIcon: {
