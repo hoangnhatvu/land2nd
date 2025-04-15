@@ -9,6 +9,7 @@ import React, {type ReactNode, isValidElement} from 'react';
 import {BaseView, MyText, TextCategoryVariant} from '../base';
 import Feather from 'react-native-vector-icons/Feather';
 import {Colors} from '../../utils';
+import { TAB_BAR_HEIGHT } from '../../constants/constants';
 
 interface ScreenWrapperProps {
   isShowBackButton?: boolean;
@@ -90,6 +91,7 @@ const styles = StyleSheet.create({
     right: 20,
   },
   contentContainer: {
-    flex: 1,
+    height: '100%',
+    paddingBottom: TAB_BAR_HEIGHT,
   },
 });

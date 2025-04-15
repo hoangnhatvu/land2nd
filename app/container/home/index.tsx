@@ -212,7 +212,6 @@ const Home = React.memo(() => {
 
 const styles = StyleSheet.create({
   scrollContent: {
-    paddingBottom: 24,
   },
 });
 

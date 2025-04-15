@@ -12,7 +12,6 @@ import Animated, {
     useAnimatedReaction,
     withTiming
 } from 'react-native-reanimated';
-import { constants } from '../constants';
 import { BottomTabBarProps, BottomTabNavigationEventMap } from '@react-navigation/bottom-tabs';
 declare module '@react-navigation/native' {
     export interface BottomTabNavigationEventMap {
@@ -25,11 +24,8 @@ import { NavigationHelpers, ParamListBase, TabNavigationState } from '@react-nav
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Mixins } from '../utils';
 import { MyText } from '../components';
+import { TAB_BAR_HEIGHT, TAB_BAR_WIDTH } from '../constants/constants';
 
-const THE_NUMBER_OF_ITEM_TAB = 4;
-const PADDING_HOR = 32;
-const TAB_BAR_WIDTH = (constants.width - PADDING_HOR) / THE_NUMBER_OF_ITEM_TAB;
-const TAB_BAR_HEIGHT = 64;
 interface TabOptions {
   icon?: string;
   tabLabel: string;
@@ -185,7 +181,7 @@ const styles = StyleSheet.create({
         width: TAB_BAR_WIDTH,
         height: TAB_BAR_HEIGHT,
         justifyContent: 'center',
-        alignItems: 'center',
+        backgroundColor: 'red',
         paddingTop: 12
     },
     tabIcon: {

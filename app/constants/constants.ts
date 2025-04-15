@@ -6,6 +6,11 @@ export const designWidth = 375;
 export const designHeight = 812;
 export const widthRatio = width / designWidth;
 
+export const THE_NUMBER_OF_ITEM_TAB = 4;
+export const PADDING_HOR = 32;
+export const TAB_BAR_WIDTH = (width - PADDING_HOR) / THE_NUMBER_OF_ITEM_TAB;
+export const TAB_BAR_HEIGHT = 64;
+
 export const EMAIL_REGEX =
     /^([a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum|vn))$/;
 
