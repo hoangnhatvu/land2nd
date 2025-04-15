@@ -10,6 +10,7 @@ export const MAIN_STACK = {
     NOTIFICATION: 'Notification',
     CART: 'Cart',
     PROFILE: 'Profile',
+    SHOPPING: 'Shopping',
 };
 
 export const APP_SCREEN = {

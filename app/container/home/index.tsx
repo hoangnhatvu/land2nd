@@ -8,6 +8,8 @@ import Banner from './elements/Banner';
 import BannerSlider from './elements/BannerSLider';
 import NewsList from './elements/NewsList';
 import {BaseView, HomeSkeleton, ScreenWrapper} from '@components';
+import { useNavigation } from '@react-navigation/native';
+import { APP_SCREEN } from '@constants';
 
 const buyProducts = [
   {
@@ -105,6 +107,7 @@ const bannerSlides = [
 const Home = React.memo(() => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const navigation = useNavigation();
 
   // Simulate loading data
   useEffect(() => {
@@ -167,7 +170,7 @@ const Home = React.memo(() => {
           products={buyProducts}
           contanerStyle={{marginTop: 50}}
           cardType="standard"
-          onSeeAllPress={() => console.log('See all buy products')}
+          onSeeAllPress={() => navigation.navigate(APP_SCREEN.SHOPPING as never)}
         />
 
         <Banner

@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   scrollContent: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 16,
+    gap: 20,
     paddingBottom: 8,
   },
 });

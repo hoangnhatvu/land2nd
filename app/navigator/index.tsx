@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { APP_SCREEN } from '../constants';
 import HomeTabbar from './bottomNavigator';
 import AuthStack from './authenNavigator';
+import Shopping from '../container/shopping';
 
 type RootStackParamList = {
   [APP_SCREEN.HOME_TAB]: undefined;
@@ -20,6 +21,10 @@ const mainScreens: ScreenConfig[] = [
   {
     name: APP_SCREEN.HOME_TAB,
     component: HomeTabbar
+  },
+  {
+    name: APP_SCREEN.SHOPPING,
+    component: Shopping
   }
 ];
 

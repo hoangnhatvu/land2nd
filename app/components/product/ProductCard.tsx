@@ -3,6 +3,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {MyText} from '@components';
 import {Colors} from '@utils';
+import { constants } from '@constants';
 
 export type ProductCardType = 'standard' | 'simple' | 'category';
 
@@ -116,10 +117,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: 151,
+    width: constants.width / 2 - 26,
     backgroundColor: Colors.WHITE,
     borderRadius: 10,
-    marginHorizontal: 8,
     shadowColor: Colors.BLACK,
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.05,

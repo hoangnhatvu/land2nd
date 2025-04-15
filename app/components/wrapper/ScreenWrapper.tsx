@@ -67,7 +67,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
         </View>
       )}
 
-      <View style={{paddingBottom: hasTabBar ? BOTTOM_INSETS_WITH_BOTTOM_TAB : 16}}>
+      <View style={{paddingBottom: hasTabBar ? BOTTOM_INSETS_WITH_BOTTOM_TAB : insets.bottom}}>
         {isValidElement(children) && children}
       </View>
 
