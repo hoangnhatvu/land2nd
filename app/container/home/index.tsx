@@ -8,8 +8,8 @@ import Banner from './elements/Banner';
 import BannerSlider from './elements/BannerSLider';
 import NewsList from './elements/NewsList';
 import {BaseView, HomeSkeleton, ScreenWrapper} from '@components';
-import { useNavigation } from '@react-navigation/native';
-import { APP_SCREEN } from '@constants';
+import {useNavigation} from '@react-navigation/native';
+import {APP_SCREEN} from '@constants';
 
 const buyProducts = [
   {
@@ -170,7 +170,9 @@ const Home = React.memo(() => {
           products={buyProducts}
           contanerStyle={{marginTop: 50}}
           cardType="standard"
-          onSeeAllPress={() => navigation.navigate(APP_SCREEN.SHOPPING as never)}
+          onSeeAllPress={() =>
+            navigation.navigate(APP_SCREEN.SHOPPING as never)
+          }
         />
 
         <Banner
@@ -214,8 +216,7 @@ const Home = React.memo(() => {
 });
 
 const styles = StyleSheet.create({
-  scrollContent: {
-  },
+  scrollContent: {},
 });
 
 export default Home;

@@ -1,9 +1,10 @@
-import React, { memo } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { APP_SCREEN } from '../constants';
+import React, {memo} from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {APP_SCREEN} from '../constants';
 import HomeTabbar from './bottomNavigator';
 import AuthStack from './authenNavigator';
 import Shopping from '../container/shopping';
+import TermAndCondition from '../container/profile/other/TermAndCondition';
 
 type RootStackParamList = {
   [APP_SCREEN.HOME_TAB]: undefined;
@@ -20,29 +21,32 @@ interface ScreenConfig {
 const mainScreens: ScreenConfig[] = [
   {
     name: APP_SCREEN.HOME_TAB,
-    component: HomeTabbar
+    component: HomeTabbar,
   },
   {
     name: APP_SCREEN.SHOPPING,
-    component: Shopping
-  }
+    component: Shopping,
+  },
+  {
+    name: APP_SCREEN.TERM_CONDITION,
+    component: TermAndCondition,
+  },
 ];
 
 const authScreens: ScreenConfig[] = [
   {
     name: APP_SCREEN.AUTHEN,
-    component: AuthStack
-  }
+    component: AuthStack,
+  },
 ];
 
 const MainNavigator = memo(() => {
   return (
     <RootStack.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{headerShown: false}}
       initialRouteName={APP_SCREEN.HOME_TAB}>
-      
       <RootStack.Group>
-        {mainScreens.map((screen) => (
+        {mainScreens.map(screen => (
           <RootStack.Screen
             key={screen.name}
             name={screen.name}
@@ -50,9 +54,9 @@ const MainNavigator = memo(() => {
           />
         ))}
       </RootStack.Group>
-      
+
       <RootStack.Group>
-        {authScreens.map((screen) => (
+        {authScreens.map(screen => (
           <RootStack.Screen
             key={screen.name}
             name={screen.name}

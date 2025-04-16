@@ -1,37 +1,38 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {MyText, TextVariant} from '@components';
+import {Colors} from '@utils';
 import Item from './Item';
-import {Colors} from '../../../utils';
 
-const UserService = () => {
+const Service = () => {
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 20}}>Chăm sóc khách hàng</Text>
+      <MyText category={TextVariant.MAIN_TITLE} text={'Chăm sóc khách hàng'} />
 
       <View style={styles.itemContainer}>
         <Item
           label={'Tra cứu đơn online'}
-          icon={
-            <Icon name="square-edit-outline" color={Colors.GRAY} size={20} />
-          }
+          icon={<Icon name="magnify" color={Colors.GRAY} size={20} />}
         />
         <View style={styles.divider} />
         <Item
           label={'Tra cứu bảo hành'}
-          icon={<Icon name="lock-outline" color={Colors.GRAY} size={20} />}
+          icon={
+            <Icon name="shield-check-outline" color={Colors.GRAY} size={20} />
+          }
         />
         <View style={styles.divider} />
         <Item
           label={'Tra cứu điểm tích luỹ'}
-          icon={<Icon name="lock-outline" color={Colors.GRAY} size={20} />}
+          icon={<Icon name="star-outline" color={Colors.GRAY} size={20} />}
         />
       </View>
     </View>
   );
 };
 
-export default UserService;
+export default Service;
 
 const styles = StyleSheet.create({
   container: {

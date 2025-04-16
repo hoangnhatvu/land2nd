@@ -42,6 +42,7 @@ export default UserHeader;
 
 const styles = StyleSheet.create({
   container: {
+    padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 20,

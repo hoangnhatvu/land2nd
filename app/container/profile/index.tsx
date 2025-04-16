@@ -1,17 +1,34 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {UserHeader, UserInfo, UserOthers, UserService} from './components';
+import {Header, Info, Others, Service} from './element';
 import {Colors} from '@utils';
+import {MyButton, ScreenWrapper} from '@components';
+import {ScrollView} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
+import {APP_SCREEN} from '@constants';
 
 const Profile = () => {
+  const navigation = useNavigation();
+
+  const onLogout = () => {};
+
+  const onEditProfile = () => {};
+
+  const onTermsAndConditions = () => {
+    navigation.navigate(APP_SCREEN.TERM_CONDITION as never);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <UserHeader />
-      <UserInfo />
-      <UserService />
-      <UserOthers />
-    </SafeAreaView>
+    <ScreenWrapper customHeader={<Header />}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        showsVerticalScrollIndicator={false}>
+        <Info />
+        <Service />
+        <Others onTermsAndConditions={onTermsAndConditions} />
+        <MyButton title={'Đăng xuất'} type="outline" onPress={() => {}} />
+      </ScrollView>
+    </ScreenWrapper>
   );
 };
 
@@ -19,9 +36,9 @@ export default Profile;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingHorizontal: 16,
-    gap: 10,
+    paddingBottom: 70,
+    gap: 15,
     backgroundColor: Colors.WHITE,
   },
 });

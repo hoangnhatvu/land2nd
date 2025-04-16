@@ -1,15 +1,16 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {MyText, TextVariant} from '@components';
+import {Colors} from '@utils';
 import Item from './Item';
-import {Colors} from '../../../utils';
 
-interface UserInfoProps {}
+interface InfoProps {}
 
-const UserInfo = ({}: UserInfoProps) => {
+const Info = ({}: InfoProps) => {
   return (
     <View style={styles.container}>
-      <Text style={{fontSize: 20}}>Thông tin cá nhân</Text>
+      <MyText category={TextVariant.MAIN_TITLE} text={'Thông tin cá nhân'} />
 
       <View style={styles.itemContainer}>
         <Item
@@ -28,7 +29,7 @@ const UserInfo = ({}: UserInfoProps) => {
   );
 };
 
-export default UserInfo;
+export default Info;
 
 const styles = StyleSheet.create({
   container: {
