@@ -1,14 +1,26 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
+// import {ScrollView} from 'react-native-gesture-handler';
 import {Colors} from '@utils';
 import {MyButton, MyText, ScreenWrapper, TextVariant} from '@components';
 import {useNavigation} from '@react-navigation/native';
 import {Item} from '../element';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {TermSheet} from './components';
 
 const TermAndCondition = () => {
   const navigation = useNavigation();
+  const [isVisible, setIsVisible] = useState(false);
+  const [urlLink, setUrlLink] = useState('');
+
+  const onOpenTermSheet = (url: string) => {
+    setUrlLink(url);
+    setIsVisible(true);
+  };
+
+  const onCloseTermSheet = () => {
+    setIsVisible(false);
+  };
 
   const onGoBack = () => {
     navigation.goBack();
@@ -26,12 +38,18 @@ const TermAndCondition = () => {
             icon={
               <Icon name="swap-horizontal" size={20} color={Colors.PRIMARY} />
             }
+            onPress={() =>
+              onOpenTermSheet('https://2handland.com/chinh-sach-doi-tra')
+            }
           />
           <View style={styles.divider} />
           <Item
             label={'Chính sách bán hàng'}
             type="outlined"
             icon={<Icon name="cart-outline" size={20} color={Colors.PRIMARY} />}
+            onPress={() =>
+              onOpenTermSheet('https://2handland.com/chinh-sach-ban-hang')
+            }
           />
           <View style={styles.divider} />
           <Item
@@ -44,6 +62,9 @@ const TermAndCondition = () => {
                 color={Colors.PRIMARY}
               />
             }
+            onPress={() =>
+              onOpenTermSheet('https://2handland.com/chinh-sach-bao-mat')
+            }
           />
           <View style={styles.divider} />
           <Item
@@ -51,6 +72,9 @@ const TermAndCondition = () => {
             type="outlined"
             icon={
               <Icon name="wrench-outline" size={20} color={Colors.PRIMARY} />
+            }
+            onPress={() =>
+              onOpenTermSheet('https://2handland.com/chinh-sach-bao-hanh')
             }
           />
           <View style={styles.divider} />
@@ -64,6 +88,9 @@ const TermAndCondition = () => {
                 color={Colors.PRIMARY}
               />
             }
+            onPress={() =>
+              onOpenTermSheet('https://2handland.com/chinh-sach-kiem-hang')
+            }
           />
           <View style={styles.divider} />
           <Item
@@ -71,6 +98,11 @@ const TermAndCondition = () => {
             type="outlined"
             icon={
               <Icon name="truck-outline" size={20} color={Colors.PRIMARY} />
+            }
+            onPress={() =>
+              onOpenTermSheet(
+                'https://2handland.com/chinh-sach-van-chuyen-va-giao-hang',
+              )
             }
           />
         </View>
@@ -101,6 +133,11 @@ const TermAndCondition = () => {
             category={TextVariant.NORMAL_TEXT}
           />
         </View>
+        <TermSheet
+          isVisible={isVisible}
+          onClose={onCloseTermSheet}
+          url={urlLink}
+        />
       </ScrollView>
     </ScreenWrapper>
   );
