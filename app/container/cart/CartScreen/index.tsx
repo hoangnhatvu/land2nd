@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import { ScreenWrapper } from '../../../components';
-import { Colors } from '../../../utils';
 import { useNavigation } from '@react-navigation/native';
 import { CartItem, CheckoutButton, CartItemData } from './components';
-import { CART_STACK } from '../../../constants';
+import { CART_STACK } from '@constants';
+import { Colors } from '@utils';
 
 const {ORDER_SCREEN} = CART_STACK
 

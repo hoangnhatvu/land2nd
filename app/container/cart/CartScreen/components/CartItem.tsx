@@ -10,7 +10,7 @@ export interface CartItemData {
   category: string;
   price: number;
   quantity: number;
-  image: string;
+  image: any;
 }
 
 interface CartItemProps {
