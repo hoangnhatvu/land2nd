@@ -1,8 +1,9 @@
-import React, {memo} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {APP_SCREEN} from '../constants';
+import React, { memo } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { APP_SCREEN } from '../constants';
 import HomeTabbar from './bottomNavigator';
 import AuthStack from './authenNavigator';
+import { OrderScreen, DeliveryInfoScreen } from '../container/cart';
 import Shopping from '../container/shopping';
 import TermAndCondition from '../container/profile/other/TermAndCondition';
 
@@ -21,7 +22,7 @@ interface ScreenConfig {
 const mainScreens: ScreenConfig[] = [
   {
     name: APP_SCREEN.HOME_TAB,
-    component: HomeTabbar,
+    component: HomeTabbar
   },
   {
     name: APP_SCREEN.SHOPPING,
@@ -40,10 +41,22 @@ const authScreens: ScreenConfig[] = [
   },
 ];
 
+const cartScreens: ScreenConfig[] = [
+  {
+    name: APP_SCREEN.ORDER_SCREEN,
+    component: OrderScreen
+  },
+  {
+    name: APP_SCREEN.DELIVERY_INFO_SCREEN,
+    component: DeliveryInfoScreen
+  },
+
+];
+
 const MainNavigator = memo(() => {
   return (
     <RootStack.Navigator
-      screenOptions={{headerShown: false}}
+      screenOptions={{ headerShown: false }}
       initialRouteName={APP_SCREEN.HOME_TAB}>
       <RootStack.Group>
         {mainScreens.map(screen => (
@@ -54,9 +67,19 @@ const MainNavigator = memo(() => {
           />
         ))}
       </RootStack.Group>
-
+      
       <RootStack.Group>
         {authScreens.map(screen => (
+          <RootStack.Screen
+            key={screen.name}
+            name={screen.name}
+            component={screen.component}
+          />
+        ))}
+      </RootStack.Group>
+
+      <RootStack.Group>
+        {cartScreens.map((screen) => (
           <RootStack.Screen
             key={screen.name}
             name={screen.name}
