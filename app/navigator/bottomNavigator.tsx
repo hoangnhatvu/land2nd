@@ -4,8 +4,8 @@ import TabBar from './Tabbar';
 import Notification from '../container/notification';
 import { APP_SCREEN } from '../constants';
 import Home from '../container/home';
-import Cart from '../container/cart';
 import Profile from '../container/profile';
+import { CartScreen } from '../container/cart';
 
 type TabParamList = {
     [APP_SCREEN.HOME]: undefined;
@@ -39,9 +39,9 @@ const tabItems: TabItemConfig[] = [
         badgeNumber: 0
     },
     {
-        name: APP_SCREEN.CART,
+        name: APP_SCREEN.CART_SCREEN,
         label: 'GIỎ HÀNG',
-        component: Cart,
+        component: CartScreen,
         icon: 'ic_cart',
         badgeNumber: 0
     },

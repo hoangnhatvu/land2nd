@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { APP_SCREEN } from '../constants';
 import HomeTabbar from './bottomNavigator';
 import AuthStack from './authenNavigator';
+import { OrderScreen, DeliveryInfoScreen } from '../container/cart';
 
 type RootStackParamList = {
   [APP_SCREEN.HOME_TAB]: undefined;
@@ -20,7 +21,7 @@ const mainScreens: ScreenConfig[] = [
   {
     name: APP_SCREEN.HOME_TAB,
     component: HomeTabbar
-  }
+  },
 ];
 
 const authScreens: ScreenConfig[] = [
@@ -28,6 +29,18 @@ const authScreens: ScreenConfig[] = [
     name: APP_SCREEN.AUTHEN,
     component: AuthStack
   }
+];
+
+const cartScreens: ScreenConfig[] = [
+  {
+    name: APP_SCREEN.ORDER_SCREEN,
+    component: OrderScreen
+  },
+  {
+    name: APP_SCREEN.DELIVERY_INFO_SCREEN,
+    component: DeliveryInfoScreen
+  },
+
 ];
 
 const MainNavigator = memo(() => {
@@ -48,6 +61,16 @@ const MainNavigator = memo(() => {
       
       <RootStack.Group>
         {authScreens.map((screen) => (
+          <RootStack.Screen
+            key={screen.name}
+            name={screen.name}
+            component={screen.component}
+          />
+        ))}
+      </RootStack.Group>
+
+      <RootStack.Group>
+        {cartScreens.map((screen) => (
           <RootStack.Screen
             key={screen.name}
             name={screen.name}

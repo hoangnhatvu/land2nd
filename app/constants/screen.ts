@@ -12,7 +12,16 @@ export const MAIN_STACK = {
     PROFILE: 'Profile',
 };
 
+export const CART_STACK = {
+    CART_SCREEN: 'CartScreen',
+    ORDER_SCREEN: 'OrderScreen',
+    DELIVERY_INFO_SCREEN: 'DeliveryInfoScreen',
+}
+
 export const APP_SCREEN = {
     ...AUTH_STACK,
-    ...MAIN_STACK
+    ...MAIN_STACK,
+    ...CART_STACK,
 };
+
+
