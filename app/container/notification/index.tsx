@@ -103,7 +103,7 @@ const Notification = () => {
 
         keyExtractor={(item, index) => item.message + index}
         renderSectionHeader={renderSectionHeader}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ height: '100%' }}
         renderItem={renderItem}
       />
     </ScreenWrapper>

@@ -67,11 +67,19 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
         </View>
       )}
 
-      <View style={{paddingBottom: hasTabBar ? BOTTOM_INSETS_WITH_BOTTOM_TAB : insets.bottom, flex: 1}}>
+      <View
+        style={[
+          {height: '100%'},
+          {
+            paddingBottom: hasTabBar
+              ? BOTTOM_INSETS_WITH_BOTTOM_TAB
+              : insets.bottom,
+          },
+        ]}>
         {isValidElement(children) && children}
       </View>
 
-      <View>{isValidElement(footerComponent) && footerComponent}</View>
+      <View style={styles.footer}>{isValidElement(footerComponent) && footerComponent}</View>
     </BaseView>
   );
 };
@@ -95,4 +103,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 20,
   },
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: Colors.WHITE,
+  }
 });
