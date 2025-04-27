@@ -5,9 +5,11 @@ import {MyText, TextVariant} from '@components';
 import {Colors} from '@utils';
 import Item from './Item';
 
-interface InfoProps {}
+interface InfoProps {
+  onEditProfile: () => void;
+}
 
-const Info = ({}: InfoProps) => {
+const Info = ({onEditProfile}: InfoProps) => {
   return (
     <View style={styles.container}>
       <MyText category={TextVariant.MAIN_TITLE} text={'Thông tin cá nhân'} />
@@ -18,6 +20,7 @@ const Info = ({}: InfoProps) => {
           icon={
             <Icon name="square-edit-outline" color={Colors.GRAY} size={20} />
           }
+          onPress={onEditProfile}
         />
         <View style={styles.divider} />
         <Item

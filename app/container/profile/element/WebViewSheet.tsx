@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
 import {BottomSheet} from '@components';
 
@@ -20,18 +20,7 @@ const TermSheet = ({isVisible, onClose, url}: TermSheetProps) => {
         startInLoadingState={true}
         scalesPageToFit={true}
       />
-      <View></View>
     </BottomSheet>
-    // <BottomSheet snapPoints={['90%']}>
-    //   <WebView
-    //     source={{uri: url}}
-    //     style={{flex: 1}}
-    //     javaScriptEnabled={true}
-    //     domStorageEnabled={true}
-    //     startInLoadingState={true}
-    //     scalesPageToFit={true}
-    //   />
-    // </BottomSheet>
   );
 };
 

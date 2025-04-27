@@ -12,7 +12,9 @@ const Profile = () => {
 
   const onLogout = () => {};
 
-  const onEditProfile = () => {};
+  const onEditProfile = () => {
+    navigation.navigate(APP_SCREEN.EDIT_PROFILE as never);
+  };
 
   const onTermsAndConditions = () => {
     navigation.navigate(APP_SCREEN.TERM_CONDITION as never);
@@ -23,7 +25,7 @@ const Profile = () => {
       <ScrollView
         contentContainerStyle={styles.container}
         showsVerticalScrollIndicator={false}>
-        <Info />
+        <Info onEditProfile={onEditProfile} />
         <Service />
         <Others onTermsAndConditions={onTermsAndConditions} />
         <MyButton title={'Đăng xuất'} type="outline" onPress={() => {}} />
