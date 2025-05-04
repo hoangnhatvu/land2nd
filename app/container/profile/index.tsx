@@ -16,6 +16,10 @@ const Profile = () => {
     navigation.navigate(APP_SCREEN.EDIT_PROFILE as never);
   };
 
+  const onListStore = () => {
+    navigation.navigate(APP_SCREEN.STORE_LIST as never);
+  };
+
   const onTermsAndConditions = () => {
     navigation.navigate(APP_SCREEN.TERM_CONDITION as never);
   };
@@ -27,7 +31,10 @@ const Profile = () => {
         showsVerticalScrollIndicator={false}>
         <Info onEditProfile={onEditProfile} />
         <Service />
-        <Others onTermsAndConditions={onTermsAndConditions} />
+        <Others
+          onListStore={onListStore}
+          onTermsAndConditions={onTermsAndConditions}
+        />
         <MyButton title={'Đăng xuất'} type="outline" onPress={() => {}} />
       </ScrollView>
     </ScreenWrapper>

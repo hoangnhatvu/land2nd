@@ -21,12 +21,14 @@ interface BannerSliderProps {
   data: BannerItem[];
   autoplay?: boolean;
   autoplayInterval?: number;
+  width?: number;
 }
 
 const BannerSlider: React.FC<BannerSliderProps> = ({
   data,
   autoplay = true,
   autoplayInterval = 3000,
+  width = constants.width - 16,
 }) => {
   const carouselRef = useRef(null);
 
@@ -47,7 +49,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
         ref={carouselRef}
         data={data}
         renderItem={renderItem}
-        width={constants.width}
+        width={width}
         height={150}
         autoPlay={autoplay}
         autoPlayInterval={autoplayInterval}
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     height: 150,
-    marginHorizontal: 16,
+    marginRight: 16,
     borderRadius: 10,
     overflow: 'hidden',
   },

@@ -12,6 +12,8 @@ export const MAIN_STACK = {
   PROFILE: 'Profile',
   SHOPPING: 'Shopping',
   EDIT_PROFILE: 'EditProfile',
+  STORE_LIST: 'StoreList',
+  STORE_DETAIL: 'StoreDetail',
   TERM_CONDITION: 'TermCondition',
 };
 

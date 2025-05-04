@@ -13,6 +13,7 @@ module.exports = {
           '@components': './app/components',
           '@constants': './app/constants',
           '@utils': './app/utils',
+          '@assets': './assets',
         },
         extensions: ['.tsx', '.ts', '.js', '.json'],
       },

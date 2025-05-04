@@ -7,6 +7,8 @@ import {OrderScreen, DeliveryInfoScreen} from '../container/cart';
 import Shopping from '../container/shopping';
 import TermAndCondition from '../container/profile/TermAndCondition';
 import EditProfile from '../container/profile/EditProfile';
+import StoreList from '../container/profile/StoreList';
+import StoreDetail from '../container/profile/StoreDetail';
 
 type RootStackParamList = {
   [APP_SCREEN.HOME_TAB]: undefined;
@@ -32,6 +34,14 @@ const mainScreens: ScreenConfig[] = [
   {
     name: APP_SCREEN.EDIT_PROFILE,
     component: EditProfile,
+  },
+  {
+    name: APP_SCREEN.STORE_LIST,
+    component: StoreList,
+  },
+  {
+    name: APP_SCREEN.STORE_DETAIL,
+    component: StoreDetail,
   },
   {
     name: APP_SCREEN.TERM_CONDITION,

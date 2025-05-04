@@ -7,10 +7,11 @@ import Item from './Item';
 import WebViewSheet from './WebViewSheet';
 
 interface OthersProps {
+  onListStore: () => void;
   onTermsAndConditions: () => void;
 }
 
-const Others = ({onTermsAndConditions}: OthersProps) => {
+const Others = ({onListStore, onTermsAndConditions}: OthersProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [urlLink, setUrlLink] = useState('');
 
@@ -31,7 +32,7 @@ const Others = ({onTermsAndConditions}: OthersProps) => {
         <Item
           label={'Danh sách cửa hàng'}
           icon={<Icon name="store" color={Colors.GRAY} size={20} />}
-          onPress={() => onOpenWebViewSheet('https://2handland.com/stores')}
+          onPress={onListStore}
         />
         <View style={styles.divider} />
         <Item
