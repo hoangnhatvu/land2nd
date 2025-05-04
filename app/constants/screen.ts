@@ -11,10 +11,16 @@ export const MAIN_STACK = {
   CART: 'Cart',
   PROFILE: 'Profile',
   SHOPPING: 'Shopping',
+};
+
+export const PROFILE_STACK = {
   EDIT_PROFILE: 'EditProfile',
   STORE_LIST: 'StoreList',
   STORE_DETAIL: 'StoreDetail',
   TERM_CONDITION: 'TermCondition',
+  CHECK_ORDER: 'CheckOrder',
+  CHECK_WARRANTY: 'CheckWarranty',
+  CHECK_REWARD_POINT: 'CheckRewardPoint',
 };
 
 export const CART_STACK = {
@@ -26,5 +32,6 @@ export const CART_STACK = {
 export const APP_SCREEN = {
   ...AUTH_STACK,
   ...MAIN_STACK,
+  ...PROFILE_STACK,
   ...CART_STACK,
 };

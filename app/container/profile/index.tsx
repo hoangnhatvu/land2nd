@@ -24,13 +24,29 @@ const Profile = () => {
     navigation.navigate(APP_SCREEN.TERM_CONDITION as never);
   };
 
+  const onCheckOrder = () => {
+    navigation.navigate(APP_SCREEN.CHECK_ORDER as never);
+  };
+
+  const onCheckWarranty = () => {
+    navigation.navigate(APP_SCREEN.CHECK_WARRANTY as never);
+  };
+
+  const onCheckRewardPoint = () => {
+    navigation.navigate(APP_SCREEN.CHECK_REWARD_POINT as never);
+  };
+
   return (
     <ScreenWrapper customHeader={<Header />}>
       <ScrollView
         contentContainerStyle={styles.container}
         showsVerticalScrollIndicator={false}>
         <Info onEditProfile={onEditProfile} />
-        <Service />
+        <Service
+          onCheckOrder={onCheckOrder}
+          onCheckWarranty={onCheckWarranty}
+          onCheckRewardPoint={onCheckRewardPoint}
+        />
         <Others
           onListStore={onListStore}
           onTermsAndConditions={onTermsAndConditions}

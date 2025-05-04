@@ -9,6 +9,9 @@ import TermAndCondition from '../container/profile/TermAndCondition';
 import EditProfile from '../container/profile/EditProfile';
 import StoreList from '../container/profile/StoreList';
 import StoreDetail from '../container/profile/StoreDetail';
+import CheckOrder from '../container/profile/CheckOrder';
+import CheckWarranty from '../container/profile/CheckWarranty';
+import CheckRewardPoint from '../container/profile/CheckRewardPoint';
 
 type RootStackParamList = {
   [APP_SCREEN.HOME_TAB]: undefined;
@@ -31,6 +34,16 @@ const mainScreens: ScreenConfig[] = [
     name: APP_SCREEN.SHOPPING,
     component: Shopping,
   },
+];
+
+const authScreens: ScreenConfig[] = [
+  {
+    name: APP_SCREEN.AUTHEN,
+    component: AuthStack,
+  },
+];
+
+const profileScreens: ScreenConfig[] = [
   {
     name: APP_SCREEN.EDIT_PROFILE,
     component: EditProfile,
@@ -47,12 +60,17 @@ const mainScreens: ScreenConfig[] = [
     name: APP_SCREEN.TERM_CONDITION,
     component: TermAndCondition,
   },
-];
-
-const authScreens: ScreenConfig[] = [
   {
-    name: APP_SCREEN.AUTHEN,
-    component: AuthStack,
+    name: APP_SCREEN.CHECK_ORDER,
+    component: CheckOrder,
+  },
+  {
+    name: APP_SCREEN.CHECK_WARRANTY,
+    component: CheckWarranty,
+  },
+  {
+    name: APP_SCREEN.CHECK_REWARD_POINT,
+    component: CheckRewardPoint,
   },
 ];
 
@@ -84,6 +102,16 @@ const MainNavigator = memo(() => {
 
       <RootStack.Group>
         {authScreens.map(screen => (
+          <RootStack.Screen
+            key={screen.name}
+            name={screen.name}
+            component={screen.component}
+          />
+        ))}
+      </RootStack.Group>
+
+      <RootStack.Group>
+        {profileScreens.map(screen => (
           <RootStack.Screen
             key={screen.name}
             name={screen.name}

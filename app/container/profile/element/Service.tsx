@@ -5,7 +5,17 @@ import {MyText, TextVariant} from '@components';
 import {Colors} from '@utils';
 import Item from './Item';
 
-const Service = () => {
+interface ServiceProps {
+  onCheckOrder: () => void;
+  onCheckWarranty: () => void;
+  onCheckRewardPoint: () => void;
+}
+
+const Service = ({
+  onCheckOrder,
+  onCheckWarranty,
+  onCheckRewardPoint,
+}: ServiceProps) => {
   return (
     <View style={styles.container}>
       <MyText category={TextVariant.MAIN_TITLE} text={'Chăm sóc khách hàng'} />
@@ -14,6 +24,7 @@ const Service = () => {
         <Item
           label={'Tra cứu đơn online'}
           icon={<Icon name="magnify" color={Colors.GRAY} size={20} />}
+          onPress={onCheckOrder}
         />
         <View style={styles.divider} />
         <Item
@@ -21,11 +32,13 @@ const Service = () => {
           icon={
             <Icon name="shield-check-outline" color={Colors.GRAY} size={20} />
           }
+          onPress={onCheckWarranty}
         />
         <View style={styles.divider} />
         <Item
           label={'Tra cứu điểm tích luỹ'}
           icon={<Icon name="star-outline" color={Colors.GRAY} size={20} />}
+          onPress={onCheckRewardPoint}
         />
       </View>
     </View>
